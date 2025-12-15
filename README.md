@@ -78,6 +78,14 @@ This folder represents the **analytical logic** behind the visuals.
 
 ---
 
+## Sample Charts
+
+<img width="852" height="510" alt="chart1" src="https://github.com/user-attachments/assets/5e9335f8-8da2-445b-a355-6a21a6e09707" />
+
+<img width="666" height="337" alt="chart2" src="https://github.com/user-attachments/assets/4493f9a5-a7db-4e4a-81d1-9f55aa10cd0d" />
+
+---
+
 ## Tools Used
 
 * **Power BI Desktop**
