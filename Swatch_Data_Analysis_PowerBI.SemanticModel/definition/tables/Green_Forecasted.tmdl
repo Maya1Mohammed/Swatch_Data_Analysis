@@ -1,0 +1,63 @@
+table Green_Forecasted
+	lineageTag: 7eb29154-da65-4fb5-94f2-66ec9b2c8138
+
+	column 'Average of Sales Rank (forecast)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 906670aa-bbf9-476d-992d-c30757aa4e48
+		summarizeBy: sum
+		sourceColumn: Average of Sales Rank (forecast)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Average of Sales Rank (95%CI low)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c703581d-fb68-4004-864f-8f0886326a72
+		summarizeBy: sum
+		sourceColumn: Average of Sales Rank (95%CI low)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Average of Sales Rank (95%CI high)'
+		dataType: int64
+		formatString: 0
+		lineageTag: ae71369c-5aeb-498c-9d8a-75a99eb9f813
+		summarizeBy: sum
+		sourceColumn: Average of Sales Rank (95%CI high)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index = RANKX(ALL(Green_Forecasted),Green_Forecasted[Average of Sales Rank (forecast)],,ASC)
+		formatString: 0
+		lineageTag: f5acdde5-a5da-4540-8b24-cb3499963aab
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT(DATE(2025, 6 + [Index], 1), "MMMM YYYY")
+		lineageTag: 920eaa54-5386-4fe1-8a42-649c0097f997
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastedProduct = ```
+			"Green Watch Forecasted" 
+			```
+		lineageTag: cee58de6-28bb-4951-b6a0-3ac81c2e793d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Green_Forecasted = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\user\Downloads\Uni_third_year_2024_2025\Second Semester\BI\Real_Final\Green_Forecasted.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Average of Sales Rank (forecast)", Int64.Type}, {"Average of Sales Rank (95%CI low)", Int64.Type}, {"Average of Sales Rank (95%CI high)", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

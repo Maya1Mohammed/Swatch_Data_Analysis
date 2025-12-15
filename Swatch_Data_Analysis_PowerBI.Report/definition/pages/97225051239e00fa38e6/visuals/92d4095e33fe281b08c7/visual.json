@@ -1,0 +1,138 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "92d4095e33fe281b08c7",
+  "position": {
+    "x": 0,
+    "y": 243.33333333333334,
+    "z": 1000,
+    "height": 223.33333333333334,
+    "width": 1280,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Green_Forecasted"
+                    }
+                  },
+                  "Property": "Month"
+                }
+              },
+              "queryRef": "Green_Forecasted.Month",
+              "nativeQueryRef": "Month",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Green_Forecasted"
+                    }
+                  },
+                  "Property": "ForecastedProduct"
+                }
+              },
+              "queryRef": "Green_Forecasted.ForecastedProduct",
+              "nativeQueryRef": "ForecastedProduct"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Green_Forecasted"
+                        }
+                      },
+                      "Property": "Average of Sales Rank (forecast)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Green_Forecasted.Average of Sales Rank (forecast))",
+              "nativeQueryRef": "Sum of Average of Sales Rank (forecast)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Green_Forecasted"
+                      }
+                    },
+                    "Property": "Average of Sales Rank (forecast)"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "matchLineColor": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "lineChartType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'linear'"
+                }
+              }
+            },
+            "strokeTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

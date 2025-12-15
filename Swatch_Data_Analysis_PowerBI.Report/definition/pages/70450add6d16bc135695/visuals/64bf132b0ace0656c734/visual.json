@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "64bf132b0ace0656c734",
+  "position": {
+    "x": 483.33333333333337,
+    "y": 80,
+    "z": 1000,
+    "height": 280,
+    "width": 581.66666666666674,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Swatch Products"
+                    }
+                  },
+                  "Property": "New Price"
+                }
+              },
+              "queryRef": "Swatch Products.New Price",
+              "nativeQueryRef": "New Price",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Swatch Products"
+                    }
+                  },
+                  "Property": "Average Sales Rank"
+                }
+              },
+              "queryRef": "Swatch Products.Average Sales Rank",
+              "nativeQueryRef": "Average Sales Rank"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Swatch Products"
+                  }
+                },
+                "Property": "Average Sales Rank"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

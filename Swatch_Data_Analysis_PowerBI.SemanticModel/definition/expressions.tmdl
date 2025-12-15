@@ -1,0 +1,42 @@
+expression 'Blue Watch Data' =
+		let
+		    Source = Csv.Document(File.Contents("C:\Users\user\Downloads\Uni_third_year_2024_2025\Second Semester\BI\Real_Final\Blue Watch Data.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Time", type datetime}, {"Sales Rank", Int64.Type}, {"New Price", type number}, {"List Price", Int64.Type}}),
+		    #"Added Custom" = Table.AddColumn(#"Changed Type", "Product", each "Blue Watch")
+		in
+		    #"Added Custom"
+	lineageTag: f1b41472-4798-4a0e-8b22-63b956ed6779
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Green Watch Data' =
+		let
+		    Source = Csv.Document(File.Contents("C:\Users\user\Downloads\Uni_third_year_2024_2025\Second Semester\BI\Real_Final\Green Watch Data.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Time", type datetime}, {"Sales Rank", Int64.Type}, {"New Price", type number}, {"List Price", Int64.Type}}),
+		    #"Added Custom" = Table.AddColumn(#"Changed Type", "Product", each "Green Watch")
+		in
+		    #"Added Custom"
+	lineageTag: 8d28a77c-bb45-445e-b1a1-2b3282d299ef
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Pink Watch Data' =
+		let
+		    Source = Csv.Document(File.Contents("C:\Users\user\Downloads\Uni_third_year_2024_2025\Second Semester\BI\Real_Final\Pink Watch Data.csv"),[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Time", type datetime}, {"Sales Rank", Int64.Type}, {"New Price", type number}, {"List Price", Int64.Type}}),
+		    #"Added Custom" = Table.AddColumn(#"Changed Type", "Product", each "Pink Watch")
+		in
+		    #"Added Custom"
+	lineageTag: d93b1004-321d-4991-a1cf-15602b7375c1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "7b8cec8d107944998e50",
+  "position": {
+    "x": 0,
+    "y": 80,
+    "z": 0,
+    "height": 280,
+    "width": 483.33333333333337,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Swatch Products"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Time"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Swatch Products.Time.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "Time Month",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Swatch Products"
+                    }
+                  },
+                  "Property": "Product"
+                }
+              },
+              "queryRef": "Swatch Products.Product",
+              "nativeQueryRef": "Product"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Swatch Products"
+                    }
+                  },
+                  "Property": "Average Sales Rank"
+                }
+              },
+              "queryRef": "Swatch Products.Average Sales Rank",
+              "nativeQueryRef": "Average Sales Rank"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
