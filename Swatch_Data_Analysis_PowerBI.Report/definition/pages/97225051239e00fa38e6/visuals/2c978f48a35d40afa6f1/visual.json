@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "2c978f48a35d40afa6f1",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "height": 243.33333333333334,
+    "width": 1280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Blue_Forecasted"
+                    }
+                  },
+                  "Property": "Month"
+                }
+              },
+              "queryRef": "Blue_Forecasted.Month",
+              "nativeQueryRef": "Month",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Blue_Forecasted"
+                    }
+                  },
+                  "Property": "ForecastedProduct"
+                }
+              },
+              "queryRef": "Blue_Forecasted.ForecastedProduct",
+              "nativeQueryRef": "ForecastedProduct"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Blue_Forecasted"
+                        }
+                      },
+                      "Property": "Average of Sales Rank (forecast)"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Blue_Forecasted.Average of Sales Rank (forecast))",
+              "nativeQueryRef": "Sum of Average of Sales Rank (forecast)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Blue_Forecasted"
+                      }
+                    },
+                    "Property": "Average of Sales Rank (forecast)"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

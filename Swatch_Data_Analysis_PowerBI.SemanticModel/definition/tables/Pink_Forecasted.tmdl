@@ -1,0 +1,71 @@
+table Pink_Forecasted
+	lineageTag: 1c3cf508-a320-4668-9107-9da78441260f
+
+	column 'Average of Sales Rank (forecast)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e668454-13c8-4d5a-a3c8-3a91de4e1236
+		summarizeBy: sum
+		sourceColumn: Average of Sales Rank (forecast)
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Average of Sales Rank (95%CI low)'
+		dataType: double
+		lineageTag: 99248ffa-f5d8-4d67-a819-a56035f2c0c3
+		summarizeBy: sum
+		sourceColumn: Average of Sales Rank (95%CI low)
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Average of Sales Rank (95%CI high)'
+		dataType: int64
+		formatString: 0
+		lineageTag: db426426-ef81-4706-b493-439fad87970a
+		summarizeBy: sum
+		sourceColumn: Average of Sales Rank (95%CI high)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: f1dfd384-ade9-4d5d-9b65-7b64ad89b879
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT(DATE(2025, 6 + [Index], 1), "MMMM YYYY")
+		lineageTag: 9549932c-0f6f-4e85-8b49-a4e5f34a6446
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ForecastedProduct = ```
+			"Pink Watch Forecasted" 
+			```
+		lineageTag: 21db04d2-d778-4bb0-b6e4-bff06746e8df
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Pink_Forecasted = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\user\Downloads\Uni_third_year_2024_2025\Second Semester\BI\Real_Final\Pink_Forecasted.csv"),[Delimiter=",", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Average of Sales Rank (forecast)", Int64.Type}, {"Average of Sales Rank (95%CI low)", type number}, {"Average of Sales Rank (95%CI high)", Int64.Type}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"Average of Sales Rank (forecast)", Order.Ascending}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Sorted Rows", "Index", 0, 1, Int64.Type),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Index", each ([Index] <> 0))
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

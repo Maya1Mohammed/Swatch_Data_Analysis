@@ -1,0 +1,23 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Pink Watch Data","Blue Watch Data","Green Watch Data","Swatch Products","Pink_Forecasted","Green_Forecasted","Blue_Forecasted"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_2706cb47-a7e4-40ee-90c7-cd9c889db487
+ref table 'Swatch Products'
+ref table LocalDateTable_58410e3f-3357-4951-92c6-65e209d7f2fd
+ref table Pink_Forecasted
+ref table Green_Forecasted
+ref table Blue_Forecasted
+
+ref cultureInfo en-US
+

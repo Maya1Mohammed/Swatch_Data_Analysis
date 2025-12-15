@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Swatch_Data_Analysis_PowerBI"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "12add7d8-dff4-450a-98ae-a73a490a1193"
+  }
+}

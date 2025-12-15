@@ -1,0 +1,5 @@
+relationship fa3394d8-d106-43e9-b11b-d06df722c57e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Swatch Products'.Time
+	toColumn: LocalDateTable_58410e3f-3357-4951-92c6-65e209d7f2fd.Date
+

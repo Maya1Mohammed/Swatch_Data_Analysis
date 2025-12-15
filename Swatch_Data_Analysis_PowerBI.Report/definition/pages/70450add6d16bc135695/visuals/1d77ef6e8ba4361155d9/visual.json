@@ -1,0 +1,91 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "1d77ef6e8ba4361155d9",
+  "position": {
+    "x": 603.33333333333337,
+    "y": 428.33333333333337,
+    "z": 3000,
+    "height": 291.66666666666669,
+    "width": 538.33333333333337,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Swatch Products"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "Time"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
+                    }
+                  },
+                  "Level": "Month"
+                }
+              },
+              "queryRef": "Swatch Products.Time.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "Time Month",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Swatch Products"
+                    }
+                  },
+                  "Property": "Product"
+                }
+              },
+              "queryRef": "Swatch Products.Product",
+              "nativeQueryRef": "Product"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Swatch Products"
+                        }
+                      },
+                      "Property": "Price Performance"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(Swatch Products.Price Performance)",
+              "nativeQueryRef": "Average of Price Performance"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
